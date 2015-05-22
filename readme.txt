@@ -4,29 +4,25 @@ Donate link: http://www.burma-center.org/donate/
 Tags: url, redirect, latest post, random, query, link
 Requires at least: 3.0
 Tested up to: 4.2
-Stable tag: 0.1
+Stable tag: 0.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Display your currently latest, oldest, most-commented or other post with a permanent link.
+Automatically redirect to your latest, oldest, random, or other post through a custom URL
 
 == Description ==
 
-This plugin provides an URL that takes you directly to a post in single-post view. The post is determined by the query parameter **redirect_to=** and optional others. All matching posts are sorted and the first according to the chosen order will be displayed.
+This plugin provides an URL that takes you directly to a post in single-post view. The post is determined by the query parameter **?redirect_to=** and optional others. The URL will redirect to the first of all matching posts according to the chosen order.
 
-You can use URLs such as
+= Examples for URLs =
 
 http://www.example.com/?redirect_to=latest - **redirects to the latest post**
 
-or
-
 http://www.example.com/?redirect_to=random - **redirects to a random post**
-
-or
 
 http://www.example.com/?redirect_to=custom&orderby=comment_count&order=DESC - **redirects to the post with the most comments**
 
-There is no menu or plugin page. You use it entirely through the query parameters in the URL.
+There is no settings page in the backend. You configer the plugin entirely through the query parameters in the URL.
 
 Please find more information [here](http://www.christoph-amthor.de/software/redirect-url-post/ "plugin website").
 
@@ -50,6 +46,12 @@ none (all done via URL)
 
 
 == Changelog ==
+
+= 0.2 =
+
+BUG FIXES
+
+* incorrect processing of *orderby* and *order* for *redirect_to=custom*
 
 = 0.1 =
 

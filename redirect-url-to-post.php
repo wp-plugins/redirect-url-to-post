@@ -5,7 +5,7 @@ Plugin URI:  http://www.christoph-amthor.de/software/redirect-url-post/
 Description: Redirects to a post based on parameters in the URL
 Author: Christoph Amthor
 Author URI: http://www.christoph-amthor.de/
-Version: 0.1
+Version: 0.2
 License: GNU GENERAL PUBLIC LICENSE, Version 3
 Text Domain: redirect-url-to-post
 */
@@ -30,7 +30,6 @@ function rurl2p_add_query_vars( $vars ) {
   $vars[] = "redirect_to";
 
   return $vars;
-
 }
 
 
@@ -44,12 +43,12 @@ function rurl2p_redirect_post() {
 	if ( did_action( 'parse_query' ) === 1 ) {
 
 		// Retrieve search criteria from GET query
+		// non-sanitized version: $redirect_to = trim( strtolower( $_GET['redirect_to'] ) );
 		$redirect_to = trim( get_query_var( 'redirect_to' ) );
-
 
 		// Check if parameter is set
 		if ( !empty( $redirect_to ) ) {
-		
+
 			// Set default args		
 			$args_default = array(
 				'posts_per_page'	=> 1,
@@ -78,11 +77,11 @@ function rurl2p_redirect_post() {
 			);
 				// not working:
 				// 'has_password',
-				//'post_parent',
+				// 'post_parent',
 				// 'tag_id',
 				// 'tag_and',
 				// 'tag_in',
-				//'name'
+				// 'name'
 
 			foreach ($args_default_items as $item) {
 
@@ -177,6 +176,8 @@ function rurl2p_redirect_post() {
 						exit;
 				
 					}
+					
+					$args_add = array();
 			
 				break;
 		
@@ -190,7 +191,6 @@ function rurl2p_redirect_post() {
 				break;
 			}
 
-	
 			// Retrieve the first post and redirect to its permalink
 			if ( isset( $args_add ) ) {
 
@@ -203,7 +203,7 @@ function rurl2p_redirect_post() {
 					$post = array_shift( $posts );
 
 					$permalink = get_permalink( $post );
-					
+
 					wp_redirect( $permalink );
 
 					exit;
