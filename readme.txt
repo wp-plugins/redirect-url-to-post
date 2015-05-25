@@ -4,7 +4,7 @@ Donate link: http://www.burma-center.org/donate/
 Tags: url, redirect, latest post, random, query, link
 Requires at least: 3.0
 Tested up to: 4.2
-Stable tag: 0.2
+Stable tag: 0.2.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -47,11 +47,23 @@ none (all done via URL)
 
 == Changelog ==
 
+= 0.2.1 =
+
+BUG FIXES
+
+* collision with other plugins using the same query parameter
+
+
 = 0.2 =
 
 BUG FIXES
 
 * incorrect processing of *orderby* and *order* for *redirect_to=custom*
+
+NOTE
+
+* sorry, inconsistent version numbering...
+
 
 = 0.1 =
 

@@ -5,7 +5,7 @@ Plugin URI:  http://www.christoph-amthor.de/software/redirect-url-post/
 Description: Redirects to a post based on parameters in the URL
 Author: Christoph Amthor
 Author URI: http://www.christoph-amthor.de/
-Version: 0.2
+Version: 0.2.1
 License: GNU GENERAL PUBLIC LICENSE, Version 3
 Text Domain: redirect-url-to-post
 */
@@ -181,12 +181,10 @@ function rurl2p_redirect_post() {
 			
 				break;
 		
-				// Any other value triggers error message
+				// Unrecognized value of 'redirect_to' => finish processing and let other plugins do their work
 				default:
 			
-					echo "Error: Unrecognized value of 'redirect_to'";
-			
-					exit;
+					return;
 			
 				break;
 			}
