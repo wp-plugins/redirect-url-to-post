@@ -1,10 +1,10 @@
 === Redirect URL to Post ===
 Contributors: camthor
 Donate link: http://www.burma-center.org/donate/
-Tags: url, redirect, latest post, random, query, link
+Tags: url, redirect, latest post, random, random post, single post, query, link
 Requires at least: 3.0
-Tested up to: 4.2
-Stable tag: 0.2.1
+Tested up to: 4.2.2
+Stable tag: 0.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -22,7 +22,9 @@ http://www.example.com/?redirect_to=random - **redirects to a random post**
 
 http://www.example.com/?redirect_to=custom&orderby=comment_count&order=DESC - **redirects to the post with the most comments**
 
-There is no settings page in the backend. You configer the plugin entirely through the query parameters in the URL.
+http://www.example.com/?redirect_to=latest&s=iaido&default_redirect_to=12 - **redirects to the latest post containing the word 'iaido' or, if nothing can be found, to the page or post with the id 12**
+
+There is no settings page in the backend. You configure the plugin entirely through the query parameters in the URL.
 
 Please find more information [here](http://www.christoph-amthor.de/software/redirect-url-post/ "plugin website").
 
@@ -39,13 +41,22 @@ Please find more information [here](http://www.christoph-amthor.de/software/redi
 There can be only *one* winner. The post that would be first in the list (as determined by WP) beats all others.
 
 
-
 == Screenshots ==
 
 none (all done via URL)
 
-
 == Changelog ==
+
+= 0.3 =
+
+FEATURES
+
+* added option 'default_redirect_to'
+* enabled criteria 'has_password' and 'tag_id'
+
+BUG FIXES
+
+* improved compatibility with other plugins
 
 = 0.2.1 =
 
