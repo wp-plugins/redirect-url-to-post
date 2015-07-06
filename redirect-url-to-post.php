@@ -6,7 +6,7 @@
   Description: Redirects to a post based on parameters in the URL
   Author: Christoph Amthor
   Author URI: http://www.christoph-amthor.de/
-  Version: 0.3
+  Version: 0.3.1
   License: GNU GENERAL PUBLIC LICENSE, Version 3
   Text Domain: redirect-url-to-post
  */
@@ -18,7 +18,10 @@
  */
 add_action( 'send_headers', 'rurl2p_redirect_post' );
 
-add_filter( 'plugin_action_links', 'add_help_link', 10 );
+if ( is_admin() ) {
+
+    add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'add_help_link', 10 );
+}
 
 
 /**
@@ -189,7 +192,7 @@ function rurl2p_redirect_post()
                     // Nothing found, go to post with id as specified by redirect_to_default, or home
 
                     if ( isset( $_GET['default_redirect_to'] ) ) {
-                    $default_redirect_to = sanitize_key( $_GET['default_redirect_to'] );
+                        $default_redirect_to = sanitize_key( $_GET['default_redirect_to'] );
                     }
 
                     if ( empty( $default_redirect_to ) ) {
@@ -222,22 +225,12 @@ function rurl2p_redirect_post()
 /**
  * Add Help link to plugins page
  */
-function add_help_link( $links, $file )
+function add_help_link( $links )
 {
 
-    static $this_plugin;
+    $settings_link = '<a href="http://www.christoph-amthor.de/software/redirect-url-post/" target="_blank">' . __( "Help", "redirect-url-to-post" ) . '</a>';
 
-    if ( !$this_plugin ) {
-
-        $this_plugin = plugin_basename( __FILE__ );
-    }
-
-    if ( $file == $this_plugin ) {
-
-        $settings_link = '<a href="http://www.christoph-amthor.de/software/redirect-url-post/" target="_blank">' . __( "Help", "redirect-url-to-post" ) . '</a>';
-
-        array_unshift( $links, $settings_link );
-    }
+    array_unshift( $links, $settings_link );
 
     return $links;
 
