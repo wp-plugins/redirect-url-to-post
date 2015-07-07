@@ -6,7 +6,7 @@
   Description: Redirects to a post based on parameters in the URL
   Author: Christoph Amthor
   Author URI: http://www.christoph-amthor.de/
-  Version: 0.3.1
+  Version: 0.3.2
   License: GNU GENERAL PUBLIC LICENSE, Version 3
   Text Domain: redirect-url-to-post
  */
@@ -38,6 +38,7 @@ function rurl2p_redirect_post()
         // Use sanitized $_GET to be independent from current state of WP Query and possible unavailability of GET parameters.
         if ( !empty( $_GET['redirect_to'] ) ) {
 
+            // Can use sanitize_key because only small letters and underscores needed
             $redirect_to = sanitize_key( $_GET['redirect_to'] );
 
             // Set default args		
@@ -73,8 +74,8 @@ function rurl2p_redirect_post()
 
                 if ( isset( $_GET[$value] ) ) {
 
-                    // values sanitized by WP
-                    $args_query_values[$value] = sanitize_key( $_GET[$value] );
+                    // Sanitized with sanitize_text_field because some values may be uppercase or spaces
+                    $args_query_values[$value] = sanitize_text_field( $_GET[$value] );
                 }
             }
 

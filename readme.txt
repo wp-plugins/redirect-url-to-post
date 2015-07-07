@@ -12,7 +12,16 @@ Automatically redirect to your latest, oldest, random, or other post through a c
 
 == Description ==
 
-This plugin provides an URL that takes you directly to a post in single-post view. The post is determined by the query parameter **?redirect_to=** and optional others. The URL will redirect to the first of all matching posts according to the chosen order.
+This plugin provides an URL that takes you directly to a post in *single-post view*. The post is determined by the query parameter **?redirect_to=** and optional others. The URL will redirect to the first of all matching posts according to the chosen order.
+
+Possible values for **redirect_to** are:
+
+* **last** or **latest** – The URL will redirect to the (last) latest post.
+* **first** or **oldest** – The URL will redirect to the first (oldest) post.
+* **random** – The URL will redirect to a random post.
+* **custom** – The post will be determined according to the mandatory parameter orderby and the optional parameter order.
+
+You can also limit the scope of considered posts by additional parameters, such as **&s=searchaword** or **cat=2**.
 
 = Examples for URLs =
 
@@ -59,6 +68,7 @@ FEATURES
 
 * added option 'default_redirect_to'
 * enabled criteria 'has_password' and 'tag_id'
+* added a "Help" link on the plugins page
 
 BUG FIXES
 
@@ -93,4 +103,3 @@ Nothing yet.
 
 
 == Other Notes ==
-
