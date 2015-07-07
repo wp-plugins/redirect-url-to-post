@@ -56,6 +56,12 @@ none (all done via URL)
 
 == Changelog ==
 
+= 0.3.2 =
+
+BUG FIXES
+
+* parameters with upper-case values not working
+
 = 0.3.1 =
 
 BUG FIXES
