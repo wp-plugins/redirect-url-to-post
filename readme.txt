@@ -4,7 +4,7 @@ Donate link: http://www.burma-center.org/donate/
 Tags: url, redirect, latest post, random, random post, single post, query, link
 Requires at least: 3.0
 Tested up to: 4.2.2
-Stable tag: 0.3.1
+Stable tag: 0.3.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -16,12 +16,12 @@ This plugin provides an URL that takes you directly to a post in *single-post vi
 
 Possible values for **redirect_to** are:
 
-* **last** or **latest** – The URL will redirect to the (last) latest post.
+* **last** or **latest** – The URL will redirect to the last (latest) post.
 * **first** or **oldest** – The URL will redirect to the first (oldest) post.
 * **random** – The URL will redirect to a random post.
 * **custom** – The post will be determined according to the mandatory parameter orderby and the optional parameter order.
 
-You can also limit the scope of considered posts by additional parameters, such as **&s=searchaword** or **cat=2**.
+You can also limit the scope of considered posts by additional parameters, such as **&s=searchaword** or **&cat=2**.
 
 = Examples for URLs =
 
