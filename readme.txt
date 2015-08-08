@@ -3,7 +3,7 @@ Contributors: camthor
 Donate link: http://www.burma-center.org/donate/
 Tags: url, redirect, latest post, random, random post, single post, query, link
 Requires at least: 3.0
-Tested up to: 4.2.2
+Tested up to: 4.3
 Stable tag: 0.3.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
