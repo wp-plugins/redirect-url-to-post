@@ -3,8 +3,8 @@ Contributors: camthor
 Donate link: http://www.burma-center.org/donate/
 Tags: url, redirect, latest post, random, random post, single post, query, link
 Requires at least: 3.0
-Tested up to: 4.3
-Stable tag: 0.3.2
+Tested up to: 4.3.1
+Stable tag: 0.4
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -28,6 +28,8 @@ You can also limit the scope of considered posts by additional parameters, such 
 http://www.example.com/?redirect_to=latest - **redirects to the latest post**
 
 http://www.example.com/?redirect_to=random - **redirects to a random post**
+
+http://www.example.com/?redirect_to=latest&exclude=4,7 - **redirects to the latest post, excluding the posts with the IDs 4 and 7**
 
 http://www.example.com/?redirect_to=custom&orderby=comment_count&order=DESC - **redirects to the post with the most comments**
 
@@ -55,6 +57,18 @@ There can be only *one* winner. The post that would be first in the list (as det
 none (all done via URL)
 
 == Changelog ==
+
+= 0.4 =
+
+FEATURES
+
+* added option 'exclude' to exclude posts and pages by IDs
+
+= 0.3.3 =
+
+BUG FIXES
+
+* parameter not reliably processed on some sites
 
 = 0.3.2 =
 

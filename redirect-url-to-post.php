@@ -6,13 +6,14 @@
   Description: Redirects to a post based on parameters in the URL
   Author: Christoph Amthor
   Author URI: http://www.christoph-amthor.de/
-  Version: 0.3.2
+  Version: 0.4
   License: GNU GENERAL PUBLIC LICENSE, Version 3
   Text Domain: redirect-url-to-post
  */
 
 class RedirectUrlToPost
 {
+
 
     /**
      * 	Initial setup: Register the filter and action
@@ -37,13 +38,16 @@ class RedirectUrlToPost
     function redirect_post()
     {
 
+        global $redirect_post_query_run;
+
         // Prevent being triggered again when executing the query
-        if ( did_action( 'parse_query' ) === 0 ) {
+        if ( $redirect_post_query_run == 0 ) {
+
+            $redirect_post_query_run++;
 
             // Retrieve search criteria from GET query
             // Use sanitized $_GET to be independent from current state of WP Query and possible unavailability of GET parameters.
             if ( !empty( $_GET['redirect_to'] ) ) {
-
                 // Can use sanitize_key because only small letters and underscores needed
                 $redirect_to = sanitize_key( $_GET['redirect_to'] );
 
@@ -73,15 +77,29 @@ class RedirectUrlToPost
                     'author',
                     'author_name',
                     'has_password',
-                    'tag_id'
+                    'tag_id',
+                    'exclude'
                 );
 
                 foreach ( $args_default_values as $value ) {
 
                     if ( isset( $_GET[$value] ) ) {
+                    
+                    	if ( $value == 'exclude' ) {
+                    	
+                    		$args_query_values['post__not_in'] =
+                    		array_map( 'intval',
+                    			array_map( 'trim',
+                    				explode( ',', $_GET['exclude'] )
+                    			)
+                    		);
+                    	
+                    	} else {
 
-                        // Sanitized with sanitize_text_field because some values may be uppercase or spaces
-                        $args_query_values[$value] = sanitize_text_field( $_GET[$value] );
+	                        // Sanitized with sanitize_text_field because some values may be uppercase or spaces
+    	                    $args_query_values[$value] = sanitize_text_field( $_GET[$value] );
+    	                    
+    	                }
                     }
                 }
 
